@@ -104,9 +104,10 @@
             transition: all 0.3s ease;
             position: relative;
             padding: 0.5rem 0;
+            cursor: pointer;
         }
 
-        .nav-item:hover {
+        .nav-item:hover, .nav-item.active {
             color: var(--accent);
         }
 
@@ -121,18 +122,26 @@
             transition: width 0.3s ease;
         }
 
-        .nav-item:hover::after {
+        .nav-item:hover::after, .nav-item.active::after {
             width: 100%;
         }
 
         /* Main Content Layout */
         .main-content {
-            display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 3rem;
             padding: 3rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
+            min-height: 60vh;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .page.active {
+            display: block;
         }
 
         /* Dogs Section */
@@ -265,6 +274,218 @@
             border: 1px solid var(--primary-lighter);
         }
 
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--primary-light);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--primary-lighter);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            border-color: var(--accent);
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin: 1rem 0;
+            font-weight: bold;
+        }
+
+        .service-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .service-features {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stud Services */
+        .studs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stud-card {
+            background: var(--primary-light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--primary-lighter);
+        }
+
+        .stud-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .stud-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .stud-info {
+            padding: 1.5rem;
+        }
+
+        .stud-name {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stud-details {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .stud-price {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: bold;
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        /* Video Gallery */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: var(--primary-light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--primary-lighter);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+            border-color: var(--accent);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Dog of the Month Form */
+        .form-container {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--primary-lighter);
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea, .form-file {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            border: 1px solid var(--primary-lighter);
+            border-radius: 8px;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(200, 169, 126, 0.3);
+        }
+
         /* Chat Styles */
         .chat-container {
             background: var(--card-bg);
@@ -276,6 +497,7 @@
             height: 700px;
             overflow: hidden;
             position: relative;
+            margin-top: 3rem;
         }
 
         .chat-container::before {
@@ -501,13 +723,11 @@
         /* Responsive Design */
         @media (max-width: 1024px) {
             .main-content {
-                grid-template-columns: 1fr;
                 padding: 2rem 1rem;
             }
             
             .chat-container {
                 height: 600px;
-                order: -1;
             }
             
             .dogs-grid {
@@ -599,91 +819,456 @@
 
     <div class="nav-container">
         <nav class="nav">
-            <a href="#" class="nav-item">Home</a>
-            <a href="#" class="nav-item">Our Dogs</a>
-            <a href="#" class="nav-item">Available Puppies</a>
-            <a href="#" class="nav-item">About Us</a>
-            <a href="#" class="nav-item">Testimonials</a>
-            <a href="#" class="nav-item">Contact</a>
+            <a class="nav-item active" data-page="home">Home</a>
+            <a class="nav-item" data-page="stud-services">Stud Services</a>
+            <a class="nav-item" data-page="puppies">Puppies Available</a>
+            <a class="nav-item" data-page="services">Dog Services</a>
+            <a class="nav-item" data-page="videos">Funny Videos</a>
+            <a class="nav-item" data-page="dog-of-month">Dog of the Month</a>
         </nav>
     </div>
 
     <main class="main-content">
-        <section class="dogs-section">
-            <div class="certificate-seal">🏆</div>
-            <h2 class="section-title"><i class="fas fa-paw"></i> Our Premium Bloodlines</h2>
-            <div class="dogs-grid">
-                <div class="dog-card">
-                    <div class="dog-image">
-                        <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Champion Atlas">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="dogs-section">
+                <div class="certificate-seal">🏆</div>
+                <h2 class="section-title"><i class="fas fa-paw"></i> Our Premium Bloodlines</h2>
+                <div class="dogs-grid">
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Champion Atlas">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">CHAMPION ATLAS</div>
+                            <div class="dog-breed">American Pitbull Terrier</div>
+                            <div class="dog-attitude">"Excellence in every generation, loyalty in every heartbeat"</div>
+                            <div class="dog-price">$2,500</div>
+                        </div>
                     </div>
-                    <div class="dog-info">
-                        <div class="dog-name">CHAMPION ATLAS</div>
-                        <div class="dog-breed">American Pitbull Terrier</div>
-                        <div class="dog-attitude">"Excellence in every generation, loyalty in every heartbeat"</div>
-                        <div class="dog-price">$2,500</div>
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Diamond Duke">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">DIAMOND DUKE</div>
+                            <div class="dog-breed">American Bully XL</div>
+                            <div class="dog-attitude">"Premium bloodline with unmatched temperament"</div>
+                            <div class="dog-price">$3,200</div>
+                        </div>
+                    </div>
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Royal Storm">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">ROYAL STORM</div>
+                            <div class="dog-breed">Staffordshire Terrier</div>
+                            <div class="dog-attitude">"Regal presence meets gentle soul"</div>
+                            <div class="dog-price">$2,800</div>
+                        </div>
+                    </div>
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Stellar Ace">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">STELLAR ACE</div>
+                            <div class="dog-breed">Pocket Bully</div>
+                            <div class="dog-attitude">"Compact excellence, boundless character"</div>
+                            <div class="dog-price">$4,000</div>
+                        </div>
                     </div>
                 </div>
-                <div class="dog-card">
-                    <div class="dog-image">
-                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Diamond Duke">
-                    </div>
-                    <div class="dog-info">
-                        <div class="dog-name">DIAMOND DUKE</div>
-                        <div class="dog-breed">American Bully XL</div>
-                        <div class="dog-attitude">"Premium bloodline with unmatched temperament"</div>
-                        <div class="dog-price">$3,200</div>
+            </div>
+
+            <aside class="chat-container">
+                <div class="certificate-seal">📜</div>
+                <div class="chat-header">
+                    <span><i class="fas fa-comments"></i></span>
+                    <span>Connect With Our Team</span>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot">
+                        Welcome to SFSG KENNELS! 🐕 We're dedicated to breeding exceptional dogs with outstanding temperaments and proven bloodlines. Our team is here to help you find the perfect companion that will become a cherished family member. Ask us about health certifications, temperament testing, training support, or any questions about our premium breeding program! 🐶
                     </div>
                 </div>
-                <div class="dog-card">
-                    <div class="dog-image">
-                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Royal Storm">
-                    </div>
-                    <div class="dog-info">
-                        <div class="dog-name">ROYAL STORM</div>
-                        <div class="dog-breed">Staffordshire Terrier</div>
-                        <div class="dog-attitude">"Regal presence meets gentle soul"</div>
-                        <div class="dog-price">$2,800</div>
-                    </div>
+                <div class="chat-input-container">
+                    <input 
+                        type="text" 
+                        class="chat-input" 
+                        id="chatInput" 
+                        placeholder="How can we help you today?"
+                        maxlength="500"
+                    >
+                    <button class="send-button" id="sendButton">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
                 </div>
-                <div class="dog-card">
-                    <div class="dog-image">
-                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Stellar Ace">
+            </aside>
+        </section>
+
+        <!-- Stud Services Page -->
+        <section id="stud-services" class="page">
+            <div class="dogs-section">
+                <div class="certificate-seal">⭐️</div>
+                <h2 class="section-title"><i class="fas fa-crown"></i> Premium Stud Services</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Our champion bloodlines are available for breeding. All our studs are health tested and come from proven pedigrees.
+                </p>
+                
+                <div class="studs-grid">
+                    <div class="stud-card">
+                        <div class="stud-image">
+                            <img src="https://images.unsplash.com/photo-1593134257782-e89567b7718a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" alt="King Zeus">
+                        </div>
+                        <div class="stud-info">
+                            <div class="stud-name">KING ZEUS</div>
+                            <div class="stud-details">
+                                <p><strong>Breed:</strong> American Bully XL</p>
+                                <p><strong>Color:</strong> Blue Fawn</p>
+                                <p><strong>Champion Bloodline:</strong> True</p>
+                                <p><strong>Health Testing:</strong> Complete</p>
+                            </div>
+                            <div class="stud-price">$1,500 Stud Fee</div>
+                        </div>
                     </div>
-                    <div class="dog-info">
-                        <div class="dog-name">STELLAR ACE</div>
-                        <div class="dog-breed">Pocket Bully</div>
-                        <div class="dog-attitude">"Compact excellence, boundless character"</div>
-                        <div class="dog-price">$4,000</div>
+                    
+                    <div class="stud-card">
+                        <div class="stud-image">
+                            <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1035&q=80" alt="Titan Max">
+                        </div>
+                        <div class="stud-info">
+                            <div class="stud-name">TITAN MAX</div>
+                            <div class="stud-details">
+                                <p><strong>Breed:</strong> American Pitbull Terrier</p>
+                                <p><strong>Color:</strong> Black Brindle</p>
+                                <p><strong>Champion Bloodline:</strong> True</p>
+                                <p><strong>Health Testing:</strong> Complete</p>
+                            </div>
+                            <div class="stud-price">$1,200 Stud Fee</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stud-card">
+                        <div class="stud-image">
+                            <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Apollo Creed">
+                        </div>
+                        <div class="stud-info">
+                            <div class="stud-name">APOLLO CREED</div>
+                            <div class="stud-details">
+                                <p><strong>Breed:</strong> Pocket Bully</p>
+                                <p><strong>Color:</strong> Tri-Color</p>
+                                <p><strong>Champion Bloodline:</strong> True</p>
+                                <p><strong>Health Testing:</strong> Complete</p>
+                            </div>
+                            <div class="stud-price">$2,000 Stud Fee</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <aside class="chat-container">
-            <div class="certificate-seal">📜</div>
-            <div class="chat-header">
-                <span><i class="fas fa-comments"></i></span>
-                <span>Connect With Our Team</span>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="message bot">
-                    Welcome to SFSG KENNELS! 🐕 We're dedicated to breeding exceptional dogs with outstanding temperaments and proven bloodlines. Our team is here to help you find the perfect companion that will become a cherished family member. Ask us about health certifications, temperament testing, training support, or any questions about our premium breeding program! 🐶
+        <!-- Puppies Available Page -->
+        <section id="puppies" class="page">
+            <div class="dogs-section">
+                <div class="certificate-seal">⭐️</div>
+                <h2 class="section-title"><i class="fas fa-dog"></i> Available Puppies</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Browse our current litter of premium puppies. All puppies come with health guarantees and registration papers.
+                </p>
+                
+                <div class="dogs-grid">
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1560809454-892b55bce5f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Zeus Jr">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">ZEUS JR</div>
+                            <div class="dog-breed">American Bully XL</div>
+                            <div class="dog-attitude">"Male, 8 weeks, blue fawn, champion bloodline"</div>
+                            <div class="dog-price">$3,500</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1064&q=80" alt="Athena">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">ATHENA</div>
+                            <div class="dog-breed">American Pitbull Terrier</div>
+                            <div class="dog-attitude">"Female, 10 weeks, brindle, exceptional temperament"</div>
+                            <div class="dog-price">$2,800</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Hercules">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">HERCULES</div>
+                            <div class="dog-breed">Staffordshire Terrier</div>
+                            <div class="dog-attitude">"Male, 9 weeks, blue nose, excellent conformation"</div>
+                            <div class="dog-price">$3,200</div>
+                        </div>
+                    </div>
+                    
+                    <div class="dog-card">
+                        <div class="dog-image">
+                            <img src="https://images.unsplash.com/photo-1544568160-8c2c49785a4c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Aphrodite">
+                        </div>
+                        <div class="dog-info">
+                            <div class="dog-name">APHRODITE</div>
+                            <div class="dog-breed">Pocket Bully</div>
+                            <div class="dog-attitude">"Female, 12 weeks, champagne, compact build"</div>
+                            <div class="dog-price">$4,500</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="chat-input-container">
-                <input 
-                    type="text" 
-                    class="chat-input" 
-                    id="chatInput" 
-                    placeholder="How can we help you today?"
-                    maxlength="500"
-                >
-                <button class="send-button" id="sendButton">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+        </section>
+
+        <!-- Dog Services Page -->
+        <section id="services" class="page">
+            <div class="dogs-section">
+                <div class="certificate-seal">⭐️</div>
+                <h2 class="section-title"><i class="fas fa-concierge-bell"></i> Premium Dog Services</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Jacksonville, Florida based services with travel options available. We provide professional care for your precious companions.
+                </p>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-baby-carriage"></i> Welping Services</h3>
+                        <div class="service-price">$600/week</div>
+                        <p class="service-description">
+                            Professional whelping services for puppies. We provide expert care during this critical period.
+                        </p>
+                        <ul class="service-features">
+                            <li>24/7 care for all dogs</li>
+                            <li>Food and extra medications included</li>
+                            <li>Care until 8 weeks period</li>
+                            <li>Flexible pickup when ready</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-graduation-cap"></i> Puppy Training</h3>
+                        <div class="service-price">From $100/week</div>
+                        <p class="service-description">
+                            Comprehensive training programs tailored to your puppy's needs and your goals.
+                        </p>
+                        <ul class="service-features">
+                            <li>Two 1-hour sessions per week</li>
+                            <li>Four month program: $350</li>
+                            <li>Obedience and socialization training</li>
+                            <li>Positive reinforcement methods</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-vial"></i> Progesterone Testing</h3>
+                        <div class="service-price">$70 per test</div>
+                        <p class="service-description">
+                            Accurate progesterone testing to determine the optimal breeding time for your female.
+                        </p>
+                        <ul class="service-features">
+                            <li>Professional testing equipment</li>
+                            <li>Accurate results</li>
+                            <li>Expert interpretation</li>
+                            <li>Breeding timing recommendations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-syringe"></i> Artificial Insemination</h3>
+                        <div class="service-price">From $70 per AI</div>
+                        <p class="service-description">
+                            Professional artificial insemination services performed by experienced technicians.
+                        </p>
+                        <ul class="service-features">
+                            <li>Professional technique</li>
+                            <li>Proper handling of semen</li>
+                            <li>Optimal timing based on testing</li>
+                            <li>Increased conception rates</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-plane"></i> Flight & Travel Nanny</h3>
+                        <div class="service-price">Prices vary</div>
+                        <p class="service-description">
+                            Safe and comfortable transport for your dog to any location.
+                        </p>
+                        <ul class="service-features">
+                            <li>Door-to-door service available</li>
+                            <li>Experienced handlers</li>
+                            <li>Regular updates during travel</li>
+                            <li>Customized to your needs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3 class="service-title"><i class="fas fa-first-aid"></i> Health Certifications</h3>
+                        <div class="service-price">Contact for pricing</div>
+                        <p class="service-description">
+                            Comprehensive health testing and certification for breeding dogs.
+                        </p>
+                        <ul class="service-features">
+                            <li>Genetic testing</li>
+                            <li>Hip and elbow evaluations</li>
+                            <li>Cardiac examinations</li>
+                            <li>Official certification paperwork</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </aside>
+        </section>
+
+        <!-- Funny Videos Page -->
+        <section id="videos" class="page">
+            <div class="dogs-section">
+                <div class="certificate-seal">⭐️</div>
+                <h2 class="section-title"><i class="fas fa-laugh-squint"></i> Funny Dog Videos</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Enjoy these hilarious moments from our canine friends. New videos added regularly!
+                </p>
+                
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <div class="video-container">
+                            <!-- Placeholder for video - in practice, you would embed actual videos -->
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Puppy vs. Water Hose</div>
+                            <p>Watch as our littlest pup discovers the water hose for the first time!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">The Great Treat Chase</div>
+                            <p>Our pack goes wild when treats are involved - who will get there first?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Sleepy Puppy Dreams</div>
+                            <p>Watch as this little one dreams of chasing rabbits in his sleep.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Pool Party Pandemonium</div>
+                            <p>Our bullies discover the kiddie pool on a hot summer day!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">The Sneaky Treat Thief</div>
+                            <p>Watch how this clever girl outsmarts everyone to get the treats!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="video-card">
+                        <div class="video-container">
+                            <div style="width:100%;height:100%;background:#1E2529;display:flex;align-items:center;justify-content:center;">
+                                <i class="fas fa-play-circle" style="font-size:3rem;color:#C8A97E;"></i>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">Puppy Playtime Chaos</div>
+                            <p>When the whole litter gets together, it's pure adorable chaos!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dog of the Month Page -->
+        <section id="dog-of-month" class="page">
+            <div class="dogs-section">
+                <div class="certificate-seal">⭐️</div>
+                <h2 class="section-title"><i class="fas fa-star"></i> Dog of the Month</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
+                    Submit your dog for a chance to be featured as our "Dog of the Month"! Each month we select one special pup to showcase.
+                </p>
+                
+                <div class="form-container">
+                    <form id="dogSubmissionForm">
+                        <div class="form-group">
+                            <label class="form-label">Your Name</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Dog's Name</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Dog's Breed</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Dog's Age</label>
+                            <input type="text" class="form-input" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Tell us about your dog</label>
+                            <textarea class="form-textarea" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Upload photos of your dog</label>
+                            <input type="file" class="form-file" multiple accept="image/*">
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Submit for Consideration</button>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -708,8 +1293,8 @@
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
-                <p><a href="#" class="nav-item">Available Puppies</a></p>
-                <p><a href="#" class="nav-item">Health Guarantee</a></p>
+                <p><a href="#" class="nav-item" data-page="puppies">Available Puppies</a></p>
+                <p><a href="#" class="nav-item" data-page="services">Health Guarantee</a></p>
                 <p><a href="#" class="nav-item">Shipping Information</a></p>
                 <p><a href="#" class="nav-item">Testimonials</a></p>
                 <p><a href="#" class="nav-item">Breeding Philosophy</a></p>
@@ -721,6 +1306,45 @@
     </footer>
 
     <script>
+        // Page Navigation System
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all navigation items and pages
+            const navItems = document.querySelectorAll('.nav-item');
+            const pages = document.querySelectorAll('.page');
+            
+            // Add click event to each navigation item
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const targetPage = this.getAttribute('data-page');
+                    
+                    // Update active navigation item
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show the target page
+                    pages.forEach(page => {
+                        page.classList.remove('active');
+                        if (page.id === targetPage) {
+                            page.classList.add('active');
+                        }
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo(0, 0);
+                });
+            });
+            
+            // Handle form submission
+            const dogForm = document.getElementById('dogSubmissionForm');
+            if (dogForm) {
+                dogForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Thank you for submitting your dog for consideration! We will review your submission and contact you if your dog is selected.');
+                    this.reset();
+                });
+            }
+        });
+
         class SFSGChatbot {
             constructor() {
                 this.chatMessages = document.getElementById('chatMessages');

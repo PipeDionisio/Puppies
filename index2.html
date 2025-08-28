@@ -5,724 +5,869 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SFSG KENNELS - So Fly So Gone</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #1E2529;
+            --primary-light: #2C353A;
+            --primary-lighter: #3A464C;
+            --accent: #C8A97E;
+            --accent-dark: #B8976E;
+            --text: #F5F5F5;
+            --text-secondary: #D1D1D1;
+            --card-bg: #2A3136;
+            --success: #4CAF50;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0F1418 0%, #1E2529 100%);
+            color: var(--text);
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+
         /* Header Styles */
-        header {
-            background: linear-gradient(to right, #1a1a1a, #2c2c2c);
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-text {
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 2rem 0;
             text-align: center;
-        }
-        
-        .logo-main {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #FFD700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-            margin: 0;
-            padding: 5px 15px;
-            border: 2px solid #FFD700;
-            border-radius: 8px;
-        }
-        
-        .logo-sub {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.8rem;
-            color: #FF0000;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo-sub::before,
-        .logo-sub::after {
-            content: "—";
-            color: #FF0000;
-            margin: 0 10px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 25px;
-        }
-        
-        .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #FFD700;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: url('https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80') no-repeat center center/cover;
-            height: 600px;
-            display: flex;
-            align-items: center;
             position: relative;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid var(--primary-lighter);
         }
-        
-        .hero::before {
+
+        .header::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(200, 169, 126, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(200, 169, 126, 0.05) 0%, transparent 40%);
+            pointer-events: none;
         }
-        
-        .hero-content {
+
+        .logo-container {
             position: relative;
-            color: #fff;
+            z-index: 2;
             max-width: 600px;
-            margin-left: 50px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+
+        .logo {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
         }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+
+        .tagline {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        
-        .btn {
-            display: inline-block;
-            background: #FFD700;
-            color: #333;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-weight: 700;
+
+        /* Navigation */
+        .nav-container {
+            background: var(--primary-light);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--primary-lighter);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .nav-item {
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .btn:hover {
-            background: #FFC400;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: #fff;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
             position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+            padding: 0.5rem 0;
         }
-        
-        .section-title h2::after {
+
+        .nav-item:hover {
+            color: var(--accent);
+        }
+
+        .nav-item::after {
             content: '';
             position: absolute;
             bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 3rem;
+            padding: 3rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Dogs Section */
+        .dogs-section {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--primary-lighter);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dogs-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--accent));
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 100px;
             height: 3px;
-            background: #FFD700;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
         }
-        
-        .about-content {
+
+        .dogs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dog-card {
+            background: var(--primary-light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--primary-lighter);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .dog-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
+        }
+
+        .dog-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
             display: flex;
             align-items: center;
-            gap: 50px;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #2c2c2c;
-        }
-        
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* Puppies Section */
-        .puppies {
-            padding: 80px 0;
-            background: #f2f2f2;
-        }
-        
-        .puppies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .puppy-card {
-            background: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .puppy-card:hover {
-            transform: translateY(-10px);
-        }
-        
-        .puppy-image {
-            height: 250px;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid var(--primary-lighter);
             overflow: hidden;
         }
-        
-        .puppy-image img {
+
+        .dog-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
+            transition: transform 0.5s ease;
         }
-        
-        .puppy-card:hover .puppy-image img {
-            transform: scale(1.1);
+
+        .dog-card:hover .dog-image img {
+            transform: scale(1.05);
         }
-        
-        .puppy-info {
-            padding: 20px;
+
+        .dog-info {
+            padding: 2rem;
+            background: var(--primary-light);
         }
-        
-        .puppy-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2c2c2c;
+
+        .dog-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
-        
-        .puppy-info p {
-            margin-bottom: 15px;
-            color: #666;
+
+        .dog-breed {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        
-        /* Chatbot Section */
-        .chatbot-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
+
+        .dog-attitude {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
-        
-        .chatbot-button {
-            width: 60px;
-            height: 60px;
-            background: #FFD700;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
+
+        .dog-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: 700;
+            text-align: center;
+            padding: 1rem;
+            background: var(--primary);
+            border-radius: 10px;
+            border: 1px solid var(--primary-lighter);
         }
-        
-        .chatbot-button:hover {
-            transform: scale(1.1);
-        }
-        
-        .chatbot-button i {
-            font-size: 24px;
-            color: #333;
-        }
-        
-        .chatbot-window {
-            width: 350px;
-            height: 450px;
-            background: #fff;
+
+        /* Chat Styles */
+        .chat-container {
+            background: var(--card-bg);
             border-radius: 15px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--primary-lighter);
             display: flex;
             flex-direction: column;
+            height: 700px;
             overflow: hidden;
+            position: relative;
+        }
+
+        .chat-container::before {
+            content: '';
             position: absolute;
-            bottom: 70px;
+            top: 0;
+            left: 0;
             right: 0;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark), var(--accent));
         }
-        
-        .chatbot-window.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
+
         .chat-header {
-            background: #2c2c2c;
-            color: #fff;
-            padding: 15px 20px;
+            background: var(--primary-light);
+            color: var(--accent);
+            padding: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--primary-lighter);
         }
-        
-        .chat-header h3 {
-            font-size: 1.2rem;
-        }
-        
-        .close-chat {
-            background: none;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-        
+
         .chat-messages {
             flex: 1;
-            padding: 20px;
             overflow-y: auto;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 1.5rem;
+            background: var(--primary);
         }
-        
+
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: var(--primary-light);
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
         .message {
-            max-width: 80%;
-            padding: 12px 15px;
-            border-radius: 18px;
-            margin-bottom: 10px;
+            max-width: 85%;
+            padding: 1.2rem 1.8rem;
+            border-radius: 15px;
+            word-wrap: break-word;
+            font-weight: 500;
+            line-height: 1.5;
+            position: relative;
         }
-        
-        .bot-message {
-            background: #f2f2f2;
-            align-self: flex-start;
-            border-bottom-left-radius: 5px;
-        }
-        
-        .user-message {
-            background: #FFD700;
+
+        .message.user {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #ffffff;
             align-self: flex-end;
-            border-bottom-right-radius: 5px;
+            border-bottom-right-radius: 8px;
         }
-        
-        .chat-input {
+
+        .message.bot {
+            background: var(--primary-light);
+            color: var(--text);
+            align-self: flex-start;
+            border-bottom-left-radius: 8px;
+            border: 1px solid var(--primary-lighter);
+        }
+
+        .message.typing {
+            background: var(--primary-light);
+            color: var(--text-secondary);
+            align-self: flex-start;
+            font-style: italic;
+            border: 1px solid var(--primary-lighter);
+        }
+
+        .chat-input-container {
+            padding: 2rem;
+            background: var(--primary-light);
+            border-top: 1px solid var(--primary-lighter);
             display: flex;
-            padding: 15px;
-            background: #f2f2f2;
+            gap: 1rem;
         }
-        
-        .chat-input input {
+
+        .chat-input {
             flex: 1;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
+            padding: 1rem 1.5rem;
+            background: var(--primary);
+            border: 1px solid var(--primary-lighter);
             border-radius: 25px;
             outline: none;
+            font-size: 1rem;
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
         }
-        
+
+        .chat-input::placeholder {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .chat-input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(200, 169, 126, 0.2);
+        }
+
         .send-button {
-            background: #2c2c2c;
-            color: #fff;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: #ffffff;
             border: none;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            margin-left: 10px;
+            width: 55px;
+            height: 55px;
             cursor: pointer;
-            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
-        
+
         .send-button:hover {
-            background: #FFD700;
-            color: #333;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(200, 169, 126, 0.3);
         }
-        
+
+        .send-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         /* Footer */
-        footer {
-            background: #2c2c2c;
-            color: #fff;
-            padding: 50px 0 20px;
+        .footer {
+            background: var(--primary-light);
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--primary-lighter);
         }
-        
+
         .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            gap: 3rem;
         }
-        
+
         .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #FFD700;
         }
-        
-        .footer-section p, .footer-section li {
-            margin-bottom: 10px;
+
+        .footer-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
         }
-        
-        .footer-section a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: #FFD700;
-        }
-        
+
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 1rem;
+            margin-top: 1.5rem;
         }
-        
+
         .social-links a {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             width: 40px;
             height: 40px;
-            background: #444;
+            background: var(--primary);
             border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            transition: background 0.3s;
+            color: var(--text);
+            transition: all 0.3s ease;
         }
-        
+
         .social-links a:hover {
-            background: #FFD700;
+            background: var(--accent);
+            transform: translateY(-3px);
         }
-        
-        .footer-bottom {
+
+        .copyright {
             text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #444;
+            color: var(--text-secondary);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--primary-lighter);
         }
-        
+
+        /* Premium Elements */
+        .certificate-seal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--accent), var(--accent-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .header-content {
-                flex-direction: column;
-                text-align: center;
+        @media (max-width: 1024px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                padding: 2rem 1rem;
             }
             
-            .nav-links {
-                margin-top: 20px;
+            .chat-container {
+                height: 600px;
+                order: -1;
             }
             
-            .hero-content {
-                margin-left: 0;
-                text-align: center;
-                padding: 0 20px;
-            }
-            
-            .about-content {
-                flex-direction: column;
+            .dogs-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                gap: 10px;
+            .header {
+                padding: 1.5rem 0;
             }
             
-            .nav-links li {
-                margin-left: 0;
+            .logo-container {
+                padding: 0 1rem;
             }
             
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .tagline {
+                font-size: 1.2rem;
+                margin-top: 1rem;
             }
             
-            .chatbot-window {
-                width: 300px;
-                height: 400px;
+            .nav {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
+            
+            .dogs-section {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .chat-header {
+                padding: 1.5rem;
+                font-size: 1.2rem;
+            }
+            
+            .chat-messages {
+                padding: 1.5rem;
+            }
+            
+            .chat-input-container {
+                padding: 1.5rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dog-card {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .dog-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .dog-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .dog-card:nth-child(4) {
+            animation-delay: 0.3s;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-text">
-                        <h1 class="logo-main">SFSG KENNELS</h1>
-                        <div class="logo-sub">So Fly So Gone</div>
-                    </div>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Puppies</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </div>
+    <header class="header">
+        <div class="logo-container">
+            <!-- Logo image -->
+            <img src="3.png" alt="SFSG KENNELS" class="logo">
+            <div class="tagline">Premium Breeding • Exceptional Bloodlines • Lifetime Support</div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Premium Pitbull Puppies</h1>
-            <p>Discover the perfect companion with exceptional pedigree, health, and temperament.</p>
-            <a href="#" class="btn">View Available Puppies</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About SFSG Kennels</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Quality Breeding Since 2010</h3>
-                    <p>At SFSG Kennels, we specialize in breeding healthy, well-tempered pitbulls with exceptional bloodlines. Our dogs are family-raised, socialized, and health-tested to ensure they become wonderful companions.</p>
-                    <p>We are committed to responsible breeding practices and prioritize the health and temperament of our dogs above all else. Our puppies come with health guarantees and are up-to-date on all vaccinations.</p>
-                    <a href="#" class="btn">Learn More About Us</a>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Pitbull from SFSG Kennels">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Puppies Section -->
-    <section class="puppies">
-        <div class="container">
-            <div class="section-title">
-                <h2>Available Puppies</h2>
-            </div>
-            <div class="puppies-grid">
-                <div class="puppy-card">
-                    <div class="puppy-image">
-                        <img src="https://images.unsplash.com/photo-1554238113-9d19ac3d0a49?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Blue Nose Pitbull Puppy">
-                    </div>
-                    <div class="puppy-info">
-                        <h3>Thor</h3>
-                        <p>Male • Blue Nose • 10 weeks old</p>
-                        <p>Excellent temperament, great with children</p>
-                        <a href="#" class="btn">Inquire</a>
-                    </div>
-                </div>
-                <div class="puppy-card">
-                    <div class="puppy-image">
-                        <img src="https://images.unsplash.com/photo-1593134257782-e89567b7718a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80" alt="Red Nose Pitbull Puppy">
-                    </div>
-                    <div class="puppy-info">
-                        <h3>Luna</h3>
-                        <p>Female • Red Nose • 12 weeks old</p>
-                        <p>Playful and energetic, very intelligent</p>
-                        <a href="#" class="btn">Inquire</a>
-                    </div>
-                </div>
-                <div class="puppy-card">
-                    <div class="puppy-image">
-                        <img src="https://images.unsplash.com/photo-1596466596120-2a8e4b5d1a51?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="Chocolate Pitbull Puppy">
-                    </div>
-                    <div class="puppy-info">
-                        <h3>Bruno</h3>
-                        <p>Male • Chocolate • 8 weeks old</p>
-                        <p>Loving personality, eager to please</p>
-                        <a href="#" class="btn">Inquire</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Chatbot Container -->
-    <div class="chatbot-container">
-        <div class="chatbot-button">
-            <i class="fas fa-comments"></i>
-        </div>
-        <div class="chatbot-window">
-            <div class="chat-header">
-                <h3>Pitbull Information Assistant</h3>
-                <button class="close-chat"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="chat-messages">
-                <div class="message bot-message">
-                    Hello! I'm here to answer any questions you have about pitbulls. How can I help you today?
-                </div>
-            </div>
-            <div class="chat-input">
-                <input type="text" placeholder="Type your message here...">
-                <button class="send-button"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
+    <div class="nav-container">
+        <nav class="nav">
+            <a href="#" class="nav-item">Home</a>
+            <a href="#" class="nav-item">Our Dogs</a>
+            <a href="#" class="nav-item">Available Puppies</a>
+            <a href="#" class="nav-item">About Us</a>
+            <a href="#" class="nav-item">Testimonials</a>
+            <a href="#" class="nav-item">Contact</a>
+        </nav>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Kennel Road, Miami, FL</p>
-                    <p><i class="fas fa-phone"></i> (305) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@sfsgkennels.com</p>
+    <main class="main-content">
+        <section class="dogs-section">
+            <div class="certificate-seal">🏆</div>
+            <h2 class="section-title"><i class="fas fa-paw"></i> Our Premium Bloodlines</h2>
+            <div class="dogs-grid">
+                <div class="dog-card">
+                    <div class="dog-image">
+                        <img src="https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Champion Atlas">
+                    </div>
+                    <div class="dog-info">
+                        <div class="dog-name">CHAMPION ATLAS</div>
+                        <div class="dog-breed">American Pitbull Terrier</div>
+                        <div class="dog-attitude">"Excellence in every generation, loyalty in every heartbeat"</div>
+                        <div class="dog-price">$2,500</div>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Available Puppies</a></li>
-                        <li><a href="#">Breeding Information</a></li>
-                        <li><a href="#">Testimonials</a></li>
-                    </ul>
+                <div class="dog-card">
+                    <div class="dog-image">
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Diamond Duke">
+                    </div>
+                    <div class="dog-info">
+                        <div class="dog-name">DIAMOND DUKE</div>
+                        <div class="dog-breed">American Bully XL</div>
+                        <div class="dog-attitude">"Premium bloodline with unmatched temperament"</div>
+                        <div class="dog-price">$3,200</div>
+                    </div>
                 </div>
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                <div class="dog-card">
+                    <div class="dog-image">
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Royal Storm">
+                    </div>
+                    <div class="dog-info">
+                        <div class="dog-name">ROYAL STORM</div>
+                        <div class="dog-breed">Staffordshire Terrier</div>
+                        <div class="dog-attitude">"Regal presence meets gentle soul"</div>
+                        <div class="dog-price">$2,800</div>
+                    </div>
+                </div>
+                <div class="dog-card">
+                    <div class="dog-image">
+                        <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="Stellar Ace">
+                    </div>
+                    <div class="dog-info">
+                        <div class="dog-name">STELLAR ACE</div>
+                        <div class="dog-breed">Pocket Bully</div>
+                        <div class="dog-attitude">"Compact excellence, boundless character"</div>
+                        <div class="dog-price">$4,000</div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2023 SFSG KENNELS - So Fly So Gone. All rights reserved.</p>
+        </section>
+
+        <aside class="chat-container">
+            <div class="certificate-seal">📜</div>
+            <div class="chat-header">
+                <span><i class="fas fa-comments"></i></span>
+                <span>Connect With Our Team</span>
             </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="message bot">
+                    Welcome to SFSG KENNELS! 🐕 We're dedicated to breeding exceptional dogs with outstanding temperaments and proven bloodlines. Our team is here to help you find the perfect companion that will become a cherished family member. Ask us about health certifications, temperament testing, training support, or any questions about our premium breeding program! 🐶
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <input 
+                    type="text" 
+                    class="chat-input" 
+                    id="chatInput" 
+                    placeholder="How can we help you today?"
+                    maxlength="500"
+                >
+                <button class="send-button" id="sendButton">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SFSG KENNELS</h3>
+                <p>Providing exceptional breeding services with a focus on health, temperament, and breed standards since 2010.</p>
+                <p><i class="fas fa-trophy"></i> AKC Registered Breeder</p>
+                <p><i class="fas fa-heart"></i> Health Guarantee on All Puppies</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Premium Lane, Beverly Hills, CA 90210</p>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@sfsgkennels.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="#" class="nav-item">Available Puppies</a></p>
+                <p><a href="#" class="nav-item">Health Guarantee</a></p>
+                <p><a href="#" class="nav-item">Shipping Information</a></p>
+                <p><a href="#" class="nav-item">Testimonials</a></p>
+                <p><a href="#" class="nav-item">Breeding Philosophy</a></p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023 SFSG KENNELS - So Fly So Gone. All rights reserved.
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const chatButton = document.querySelector('.chatbot-button');
-            const chatWindow = document.querySelector('.chatbot-window');
-            const closeChat = document.querySelector('.close-chat');
-            const sendButton = document.querySelector('.send-button');
-            const chatInput = document.querySelector('.chat-input input');
-            const chatMessages = document.querySelector('.chat-messages');
-            
-            // Toggle chat window
-            chatButton.addEventListener('click', function() {
-                chatWindow.classList.toggle('active');
-            });
-            
-            // Close chat window
-            closeChat.addEventListener('click', function() {
-                chatWindow.classList.remove('active');
-            });
-            
-            // Send message function
-            function sendMessage() {
-                const message = chatInput.value.trim();
-                if (message) {
-                    // Add user message to chat
-                    addMessage(message, 'user');
-                    chatInput.value = '';
-                    
+        class SFSGChatbot {
+            constructor() {
+                this.chatMessages = document.getElementById('chatMessages');
+                this.chatInput = document.getElementById('chatInput');
+                this.sendButton = document.getElementById('sendButton');
+                this.sessionId = this.generateSessionId();
+                
+                this.initEventListeners();
+            }
+
+            generateSessionId() {
+                return 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            }
+
+            initEventListeners() {
+                this.sendButton.addEventListener('click', () => this.sendMessage());
+                this.chatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+            }
+
+            sendToWebhook(message) {
+                const webhookData = {
+                    message: message,
+                    sessionId: this.sessionId,
+                    timestamp: new Date().toISOString(),
+                    source: "chat",
+                    url: window.location.href,
+                    userAgent: navigator.userAgent
+                };
+                
+                return fetch("https://b4e32dc7e8f1.ngrok-free.app/webhook/1dbc7d81-4ec7-419b-89ad-def65c506839", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "ngrok-skip-browser-warning": "true"
+                    },
+                    body: JSON.stringify(webhookData)
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
+                .then(data => {
+                    console.log("Webhook response:", data);
+                    if (data && typeof data === "object") {
+                        return data.output || data.reply || JSON.stringify(data);
+                    }
+                    return String(data);
+                });
+            }
+
+            async sendMessage() {
+                const message = this.chatInput.value.trim();
+                if (!message) return;
+
+                // Disable input while processing
+                this.setInputEnabled(false);
+
+                // Add user message to chat
+                this.addMessage(message, 'user');
+                this.chatInput.value = '';
+
+                // Show typing indicator
+                const typingMessage = this.addTypingIndicator();
+
+                try {
                     // Send message to webhook
-                    fetch('https://b4e32dc7e8f1.ngrok-free.app/webhook/1dbc7d81-4ec7-419b-89ad-def65c506839', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ message: message })
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        // Add bot response to chat
-                        addMessage(data.response, 'bot');
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        addMessage("I'm sorry, I'm having trouble connecting right now. Please try again later.", 'bot');
-                    });
+                    const botResponse = await this.sendToWebhook(message);
+                    
+                    // Remove typing indicator
+                    this.removeTypingIndicator(typingMessage);
+                    
+                    // Add bot response
+                    const response = botResponse || 'Thank you for your interest in SFSG KENNELS! 🏆 Our breeding specialists are reviewing your inquiry and will provide you with detailed information about our premium bloodlines, health certifications, and available puppies. We pride ourselves on transparency and will ensure you have all the information needed to make the best decision for your family. 🐕‍🦺';
+                    this.addMessage(response, 'bot');
+                    
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    
+                    // Remove typing indicator
+                    this.removeTypingIndicator(typingMessage);
+                    
+                    // Add fallback response
+                    const fallbackResponse = "We're experiencing a temporary connection issue, but don't worry - your message is important to us! 🐕‍🦺 Please try again in a moment, or feel free to contact us directly. At SFSG KENNELS, we're committed to providing you with the premium service and support you deserve. 🏆";
+                    this.addMessage(fallbackResponse, 'bot');
+                } finally {
+                    // Re-enable input
+                    this.setInputEnabled(true);
                 }
             }
-            
-            // Add message to chat
-            function addMessage(text, sender) {
-                const messageElement = document.createElement('div');
-                messageElement.classList.add('message');
-                messageElement.classList.add(sender + '-message');
-                messageElement.textContent = text;
-                chatMessages.appendChild(messageElement);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                messageDiv.textContent = text;
+                
+                this.chatMessages.appendChild(messageDiv);
+                this.scrollToBottom();
+                
+                return messageDiv;
             }
-            
-            // Send message on button click
-            sendButton.addEventListener('click', sendMessage);
-            
-            // Send message on Enter key
-            chatInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    sendMessage();
+
+            addTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.className = 'message typing';
+                typingDiv.innerHTML = `
+                    <div class="talking-dog">
+                        <div class="talking-dog-character">🐕</div>
+                        <span>Our kennel specialist is responding...</span>
+                    </div>
+                `;
+                
+                this.chatMessages.appendChild(typingDiv);
+                this.scrollToBottom();
+                
+                return typingDiv;
+            }
+
+            removeTypingIndicator(typingElement) {
+                if (typingElement && typingElement.parentNode) {
+                    typingElement.parentNode.removeChild(typingElement);
                 }
-            });
+            }
+
+            setInputEnabled(enabled) {
+                this.chatInput.disabled = !enabled;
+                this.sendButton.disabled = !enabled;
+                
+                if (enabled) {
+                    this.chatInput.focus();
+                }
+            }
+
+            scrollToBottom() {
+                this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+            }
+        }
+
+        // Initialize the chatbot when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new SFSGChatbot();
         });
     </script>
 </body>
